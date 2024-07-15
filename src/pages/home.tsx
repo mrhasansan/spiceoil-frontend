@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Category } from "./category";
+import { ProductCard } from "./product";
 
 export function Homepage() {
   return (
@@ -21,8 +23,9 @@ export function Homepage() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div>
-        <p></p>
+      <div className="grid grid-cols-2">
+        <Category />
+        <ProductCard />
       </div>
     </div>
   );

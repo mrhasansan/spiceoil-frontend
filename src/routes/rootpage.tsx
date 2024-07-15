@@ -24,7 +24,7 @@ export function Root() {
             <Link to={`signin`}>Sign in</Link>
           </li>
           <li>
-            <Link to={`Register`}>Register</Link>
+            <Link to={`register`}>Register</Link>
           </li>
         </ul>
       </nav>
