@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { Homepage } from "../src/pages/home.tsx";
 import { Root } from "./routes/rootpage.tsx";
 import { ErrorPage } from "./pages/error-page.tsx";
+import { ProductCard, loader as productsLoader } from "./pages/products.tsx";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/products",
-        element: <Homepage />,
+        element: <ProductCard />,
+        loader: productsLoader,
       },
     ],
   },

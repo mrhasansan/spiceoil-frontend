@@ -1,6 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
+export async function loader() {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/products`);
+
+  const products = await response.json();
+
+  return { products };
+}
+
 export function ProductCard() {
   return (
     <div>

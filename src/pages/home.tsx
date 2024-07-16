@@ -1,7 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Category } from "./category";
-import { ProductCard } from "./product";
+import { ProductCard } from "./products";
 
 export function Homepage() {
   return (
@@ -11,11 +11,10 @@ export function Homepage() {
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
-                <Card>
-                  <CardContent className=" items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
+                <CardContent className=" items-center justify-center p-6">
+                  <img src="https://via.placeholder.com/1500x800" alt="" />
+                  <span className="text-4xl font-semibold"> Carousel index{index + 1}</span>
+                </CardContent>
               </div>
             </CarouselItem>
           ))}
