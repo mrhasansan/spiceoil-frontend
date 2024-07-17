@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+
 import { Root } from "./routes/rootpage.tsx";
-import { ErrorPage } from "./pages/error-page.tsx";
-import { ProductCard, loader as productsLoader } from "./pages/products.tsx";
+import { ErrorPage } from "./routes/error-page.tsx";
+import { ProductsRoute, loader as productsLoader } from "./routes/products.tsx";
+import { HomeRoute } from "./routes/home.tsx";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -13,8 +16,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        path: "/",
+        element: <HomeRoute />,
+      },
+      {
         path: "/products",
-        element: <ProductCard />,
+        element: <ProductsRoute />,
         loader: productsLoader,
       },
     ],
