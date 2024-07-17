@@ -28,7 +28,10 @@ export function Root() {
           </li>
         </ul>
       </nav>
+
       <Outlet />
+
+      <footer>{/* Footer */}</footer>
     </div>
   );
 }
