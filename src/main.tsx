@@ -6,6 +6,7 @@ import { Root } from "./routes/rootpage.tsx";
 import { ErrorPage } from "./routes/error-page.tsx";
 import { ProductsRoute, loader as productsLoader } from "./routes/products.tsx";
 import { HomeRoute } from "./routes/home.tsx";
+import { ProductSlugRoute, loader as productLoader } from "./routes/product.tsx";
 
 import "./index.css";
 
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
         path: "/products",
         element: <ProductsRoute />,
         loader: productsLoader,
+      },
+      {
+        path: "/products/:slug",
+        element: <ProductSlugRoute />,
+        loader: productLoader,
       },
     ],
   },

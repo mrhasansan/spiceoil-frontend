@@ -1,12 +1,5 @@
 import { CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Category } from "./category";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function HomeRoute() {
   return (
@@ -18,10 +11,7 @@ export function HomeRoute() {
               <div className="p-1">
                 <CardContent className=" items-center justify-center p-6">
                   <img src="https://via.placeholder.com/1500x800" alt="" />
-                  <span className="text-4xl font-semibold">
-                    {" "}
-                    Carousel index{index + 1}
-                  </span>
+                  <span className="text-4xl font-semibold"> Carousel index{index + 1}</span>
                 </CardContent>
               </div>
             </CarouselItem>
@@ -30,9 +20,6 @@ export function HomeRoute() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="grid grid-cols-2">
-        <Category />
-      </div>
     </div>
   );
 }
