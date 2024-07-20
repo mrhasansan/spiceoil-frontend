@@ -1,12 +1,3 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { type Product } from "@/types/product";
 import { useLoaderData } from "react-router-dom";
 
@@ -27,27 +18,32 @@ export function ProductsRoute() {
 
   return (
     <div>
-      <ul>
+      <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+      <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product) => {
           return (
-            <li key={product.id}>
-              <Card className="w-[350px]">
-                <CardHeader>
-                  <CardTitle>{product.name}</CardTitle>
-                  <CardDescription> Description Product</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <img
-                    src="https://m.media-amazon.com/images/I/81DHmsc+f5L.jpg"
-                    alt=""
-                  />
-                  <p>Price</p>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button variant="outline">Add To Chart</Button>
-                  <Button variant="outline">Buy</Button>
-                </CardFooter>
-              </Card>
+            <li key={product.id} className="group relative">
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <img src={"https://i0.wp.com/www.perhutani.co.id/wp-content/uploads/2023/05/kayu-putih-640x330-1.jpg?fit=640%2C330&ssl=1"} className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div>
+                  <h3 className="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" className="absolute inset-0"></span>
+                      {product.name}
+                    </a>
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {" "}
+                    <span> Stock </span>
+                    {product.quantity}
+                  </p>
+                </div>
+                <p className="text-sm font-medium text-gray-900">
+                  {product.price} <span> / kg</span>
+                </p>
+              </div>
             </li>
           );
         })}
