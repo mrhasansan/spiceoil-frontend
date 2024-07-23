@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 export function Root() {
   return (
     <div className="container mx-auto p-4">
-      <nav className="bg-white ">
+      <nav>
         <ul className="container mx-auto flex justify-between items-center">
           <div>
             <h1 className="text-lg font-semibold text-gray-800">Spiceoil</h1>
