@@ -9,6 +9,8 @@ import { HomeRoute } from "./routes/home.tsx";
 import { ProductSlugRoute, loader as productLoader } from "./routes/product-detail.tsx";
 
 import "./index.css";
+import { SignInRoute } from "./routes/signin.tsx";
+import { RegisterRoute } from "./routes/register.tsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
         loader: productLoader,
       },
     ],
+  },
+  {
+    path: "/signin",
+    element: <SignInRoute />,
+  },
+  {
+    path: "/register",
+    element: <RegisterRoute />,
   },
 ]);
 

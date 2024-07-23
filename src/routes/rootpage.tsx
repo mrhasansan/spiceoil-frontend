@@ -1,10 +1,14 @@
 import { Outlet, Link } from "react-router-dom";
+import spiceoilimg from "../asset/spiceoil.svg";
 
 export function Root() {
   return (
     <div className="container mx-auto p-4">
       <nav>
         <ul className="container mx-auto flex justify-between items-center">
+          <div>
+            <img src={spiceoilimg} className="h-12" />
+          </div>
           <div>
             <h1 className="text-lg font-semibold text-gray-800">Spiceoil</h1>
           </div>
