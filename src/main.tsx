@@ -7,10 +7,9 @@ import { ErrorPage } from "./routes/error-page.tsx";
 import { ProductsRoute, loader as productsLoader } from "./routes/products.tsx";
 import { HomeRoute } from "./routes/home.tsx";
 import { ProductSlugRoute, loader as productLoader } from "./routes/product-detail.tsx";
-
-import "./index.css";
 import { SignInRoute } from "./routes/signin.tsx";
 import { RegisterRoute } from "./routes/register.tsx";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -32,15 +31,15 @@ const router = createBrowserRouter([
         element: <ProductSlugRoute />,
         loader: productLoader,
       },
+      {
+        path: "/signin",
+        element: <SignInRoute />,
+      },
+      {
+        path: "/register",
+        element: <RegisterRoute />,
+      },
     ],
-  },
-  {
-    path: "/signin",
-    element: <SignInRoute />,
-  },
-  {
-    path: "/register",
-    element: <RegisterRoute />,
   },
 ]);
 
