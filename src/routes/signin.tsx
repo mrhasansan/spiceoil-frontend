@@ -1,4 +1,39 @@
+import { cookies } from "@/modules/auth";
+import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
 import spiceoilimg from "../asset/spiceoil.svg";
+
+type SigninResponse = {
+  message: string;
+  token: string;
+};
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+
+  const userData = {
+    username: formData.get("username"),
+    password: formData.get("password"),
+  };
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/signin`, {
+    method: "POST",
+    body: JSON.stringify(userData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const signinResponse: SigninResponse = await response.json();
+
+  if (!signinResponse) {
+    return null;
+  }
+
+  const token = signinResponse.token;
+  cookies.set("token", token);
+
+  return redirect("/myprofile");
+};
 
 export function SignInRoute() {
   return (
@@ -9,18 +44,17 @@ export function SignInRoute() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action="#" method="POST" className="space-y-6">
+        <Form method="POST" className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
+            <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+              Username
             </label>
             <div className="mt-2">
               <input
-                id="email"
-                name="email"
-                type="email"
+                id="username"
+                name="username"
+                type="text"
                 required
-                autoComplete="email"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -57,7 +91,7 @@ export function SignInRoute() {
               Sign in
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );

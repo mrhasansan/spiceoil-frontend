@@ -1,4 +1,4 @@
-import { type Product } from "@/types/product";
+import { type Product } from "@/types";
 import { Link, useLoaderData } from "react-router-dom";
 
 export async function loader() {

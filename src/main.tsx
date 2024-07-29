@@ -7,8 +7,10 @@ import { ErrorPage } from "./routes/error-page.tsx";
 import { ProductsRoute, loader as productsLoader } from "./routes/products.tsx";
 import { HomeRoute } from "./routes/home.tsx";
 import { ProductSlugRoute, loader as productLoader } from "./routes/product-detail.tsx";
-import { SignInRoute } from "./routes/signin.tsx";
+import { SignInRoute, action as signinAction } from "./routes/signin.tsx";
 import { RegisterRoute, action as registerAction } from "./routes/register.tsx";
+import { ProfileRoute, loader as myProfileLoader } from "./routes/profile.tsx";
+
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -39,6 +41,12 @@ const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignInRoute />,
+        action: signinAction,
+      },
+      {
+        path: "/myprofile",
+        element: <ProfileRoute />,
+        loader: myProfileLoader,
       },
     ],
   },
