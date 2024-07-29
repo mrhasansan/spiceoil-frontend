@@ -8,7 +8,7 @@ import { ProductsRoute, loader as productsLoader } from "./routes/products.tsx";
 import { HomeRoute } from "./routes/home.tsx";
 import { ProductSlugRoute, loader as productLoader } from "./routes/product-detail.tsx";
 import { SignInRoute } from "./routes/signin.tsx";
-import { RegisterRoute } from "./routes/register.tsx";
+import { RegisterRoute, action as registerAction } from "./routes/register.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -32,12 +32,13 @@ const router = createBrowserRouter([
         loader: productLoader,
       },
       {
-        path: "/signin",
-        element: <SignInRoute />,
-      },
-      {
         path: "/register",
         element: <RegisterRoute />,
+        action: registerAction,
+      },
+      {
+        path: "/signin",
+        element: <SignInRoute />,
       },
     ],
   },

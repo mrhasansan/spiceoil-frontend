@@ -1,4 +1,36 @@
 import spiceoilimg from "../asset/spiceoil.svg";
+import { User } from "../types";
+import { ActionFunctionArgs, Form, redirect } from "react-router-dom";
+
+type RegisterResponse = {
+  message: string;
+  newUser: Pick<User, "username">;
+};
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  const formData = await request.formData();
+
+  const userData = {
+    username: formData.get("username"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/users/register`, {
+    method: "POST",
+    body: JSON.stringify(userData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const registerResponse: RegisterResponse = await response.json();
+
+  if (!registerResponse) {
+    return null;
+  }
+  return redirect("/signin");
+};
 
 export function RegisterRoute() {
   return (
@@ -9,7 +41,7 @@ export function RegisterRoute() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form action="#" method="POST" className="space-y-6">
+        <Form method="POST" className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
               Email address
@@ -65,7 +97,7 @@ export function RegisterRoute() {
               Register
             </button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   );
