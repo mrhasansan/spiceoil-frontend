@@ -16,7 +16,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     password: formData.get("password"),
   };
 
-  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/users/register`, {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/register`, {
     method: "POST",
     body: JSON.stringify(userData),
     headers: {
