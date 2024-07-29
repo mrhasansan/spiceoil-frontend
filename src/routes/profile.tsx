@@ -16,18 +16,32 @@ export async function loader() {
       headers: { Authorization: `Bearer ${tokern}` },
     }
   );
-  const myUserResponse: MyUserResponse = await response.json();
 
-  return { myUserResponse };
+  const myUserResponse: MyUserResponse = await response.json();
+  // const user: User = myUserResponseJSON.data;
+
+  return { myUserResponse: myUserResponse };
 }
 
 export function ProfileRoute() {
   const { myUserResponse } = useLoaderData() as Awaited<ReturnType<typeof loader>>;
 
   return (
-    <>
-      <h2>My user Account Detail</h2>
-      <pre>{JSON.stringify(myUserResponse, null, 2)}</pre>
-    </>
+    <div>
+      <div className="p-6 mt-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">My Profile</h2>
+        <div className="space-y-4">
+          <div className="flex items-center">
+            <div className="text-lg font-medium text-gray-600">Username:</div>
+            <div className="ml-2 text-lg text-gray-800">{myUserResponse.user.username}</div>
+          </div>
+          <div className="flex items-center">
+            <div className="text-lg font-medium text-gray-600">Email:</div>
+            <div className="ml-2 text-lg text-gray-800">{myUserResponse.user.email}</div>
+          </div>
+        </div>
+      </div>
+      <h3 className="text-xl font-semibold text-gray-800 mb-4">Products You Might Want to Buy</h3>
+    </div>
   );
 }
